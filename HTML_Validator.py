@@ -13,7 +13,7 @@ def validate_html(html):
     False
     '''
     tags = _extract_tags(html)
-    openTags = []
+    opentags = []
     if html == '':
         return True
     elif tags == []:
@@ -21,15 +21,15 @@ def validate_html(html):
     else:
         for tag in tags:
             if '/' not in tag:
-                openTags.append(tag)
+                opentags.append(tag)
             else:
-                if len(openTags) == 0:
+                if len(opentags) == 0:
                     return False
-                strippedCloseTag = tag[2:-1]
-                strippedOpenTag = openTags[-1][1:-1]
-                if strippedOpenTag == strippedCloseTag:
-                    openTags.pop()
-        if len(openTags) == 0:
+                strippedcloseTag = tag[2:-1]
+                strippedopenTag = opentags[-1][1:-1]
+                if strippedopentag == strippedclosetag:
+                    opentags.pop()
+        if len(opentags) == 0:
             return True
         else:
             return False
@@ -60,17 +60,17 @@ def _extract_tags(html):
     '''
     final_list = []
     tags = ''
-    X = False
+    x = False
     for i in html:
         if i == '<':
-            X = True
+            x = True
             tags += i
         elif i == '>':
-            X = False
+            x = False
             tags += i
             final_list += [tags]
             tags = ''
         else:
-            if X is True:
+            if x is True:
                 tags += i
     return final_list
