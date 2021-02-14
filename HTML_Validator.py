@@ -25,8 +25,8 @@ def validate_html(html):
             else:
                 if len(opentags) == 0:
                     return False
-                strippedcloseTag = tag[2:-1]
-                strippedopenTag = opentags[-1][1:-1]
+                strippedclosetag = tag[2:-1]
+                strippedopentag = opentags[-1][1:-1]
                 if strippedopentag == strippedclosetag:
                     opentags.pop()
         if len(opentags) == 0:
